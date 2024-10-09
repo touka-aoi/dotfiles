@@ -1,0 +1,10 @@
+set number
+set expandtab
+set tabstop=2
+set hlsearch
+set ignorecase
+set incsearch
+set smartcase
+set laststatus=2
+syntax on 
+set autoindent

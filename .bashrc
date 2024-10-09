@@ -1,0 +1,51 @@
+
+# asdf
+. "$HOME/.asdf/asdf.sh"
+. "$HOME/.asdf/completions/asdf.bash"
+
+# direnv
+eval "$(direnv hook bash)"
+
+
+# starship
+eval "$(starship init bash)"
+
+# cd
+cd ~
+
+fzf-select-history() {
+  local selected_command
+  selected_command=$(history | fzf --query "$READLINE_LINE" --preview "man {}")
+  if [ -n "$selected_command" ]; then
+    READLINE_LINE="$selected_command"
+    READLINE_POINT=${#READLINE_LINE}
+  fi
+}
+
+bind -x '"\C-h": "fzf-select-history"'
+
+fzf-cd-src() {
+  local selected_dir
+  selected_dir=$(ghq list -p | fzf --query "$READLINE_LINE")
+  if [ -n "$selected_dir" ]; then
+    cd "$selected_dir"
+  fi
+  clear
+}
+
+bind -x '"\C-k": "fzf-cd-src"'
+
+fzf-gh() {
+  local repo
+  local ssh_url
+  repo=$(gh repo list --json sshUrl,nameWithOwner --jq '.[] | "\(.sshUrl) \(.nameWithOwner)"' | fzf --reverse)
+  ssh_url=$(echo "$repo" | cut -d' ' -f1)
+  if [ -n "$ssh_url" ]; then
+    READLINE_LINE="${READLINE_LINE}${ssh_url}"
+    READLINE_POINT=${#READLINE_LINE}
+  fi
+}
+
+bind -x '"\C-g": "fzf-gh"'
+
+alias gst='git status'
