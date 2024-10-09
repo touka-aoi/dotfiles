@@ -26,7 +26,7 @@ bind -x '"\C-h": "fzf-select-history"'
 
 fzf-cd-src() {
   local selected_dir
-  selected_dir=$(ghq list -p | fzf --query "$READLINE_LINE")
+  selected_dir=$(ghq list -p | fzf --reverse --query "$READLINE_LINE")
   if [ -n "$selected_dir" ]; then
     cd "$selected_dir"
   fi
