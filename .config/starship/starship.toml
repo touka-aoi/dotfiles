@@ -1,2 +1,6 @@
 scan_timeout = 5
 command_timeout = 1
+
+[username]
+show_always = true
+

@@ -49,3 +49,4 @@ fzf-gh() {
 bind -x '"\C-g": "fzf-gh"'
 
 alias gst='git status'
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
