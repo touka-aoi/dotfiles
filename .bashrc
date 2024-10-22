@@ -15,7 +15,7 @@ cd ~
 
 fzf-select-history() {
   local selected_command
-  selected_command=$(history | tac | fzf --reverse --query "$READLINE_LINE")
+  selected_command=$(history | cut -c 8- | tac | fzf --reverse --query "$READLINE_LINE")
   if [ -n "$selected_command" ]; then
     READLINE_LINE="$selected_command"
     READLINE_POINT=${#READLINE_LINE}
