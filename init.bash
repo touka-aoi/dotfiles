@@ -66,3 +66,7 @@ asdf global ghq latest
 asdf plugin add golang
 asdf install golang latest
 asdf global golang latest
+
+# python
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source $HOME/.local/bin/env
