@@ -37,6 +37,7 @@ ln_dot_config
 cd ..
 
 # install other package 
+sudo apt update 
 
 # asdf
 
@@ -56,6 +57,11 @@ sudo apt install direnv
 
 #unzip
 sudo apt install unzip
+
+#pipx
+sudo apt install pipx
+pipx ensurepath
+sudo pipx ensurepath --global
 
 # ghq
 asdf plugin add ghq
