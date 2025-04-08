@@ -43,6 +43,7 @@ sudo apt update
 curl -OL https://github.com/asdf-vm/asdf/releases/download/v0.16.7/asdf-v0.16.7-linux-amd64.tar.gz
 tar -zxvf asdf-v0.16.7-linux-amd64.tar.gz
 sudo mv asdf /usr/local/bin/asdf
+rm asdf-v0.16.7-linux-amd64.tar.gz
 
 # fzf
 sudo apt install fzf
