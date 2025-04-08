@@ -68,12 +68,12 @@ sudo pipx ensurepath --global
 # ghq
 asdf plugin add ghq
 asdf install ghq latest
-asdf global ghq latest
+asdf set --home ghq latest
 
 # go
 asdf plugin add golang
 asdf install golang latest
-asdf global golang latest
+asdf set --home golang latest
 
 # python
 curl -LsSf https://astral.sh/uv/install.sh | sh
