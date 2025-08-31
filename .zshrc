@@ -101,3 +101,5 @@ bindkey "[sg" fzf-gh
 
 # measure time 
 # zprof | less
+
+. "$HOME/.local/bin/env"

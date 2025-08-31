@@ -5,21 +5,18 @@ export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 eval "$(direnv hook bash)"
 
 # starship
-eval "$(starship init bash)"
-
-# cd
-cd ~
+if command -v starship > /dev/null; then
+  eval "$(starship init bash)"
+fi
 
 fzf-select-history() {
   local selected_command
-  selected_command=$(history | cut -c 8- | fzf --tac --no-sort --reverse --query "$READLINE_LINE")
+  selected_command=$(history | cut -c 8- | fzf --tac --reverse --query "$READLINE_LINE")
   if [ -n "$selected_command" ]; then
     READLINE_LINE="$selected_command"
     READLINE_POINT=${#READLINE_LINE}
   fi
 }
-
-bind -x '"\C-h": "fzf-select-history"'
 
 fzf-cd-src() {
   local selected_dir
@@ -29,8 +26,6 @@ fzf-cd-src() {
   fi
   clear
 }
-
-bind -x '"\C-k": "fzf-cd-src"'
 
 fzf-gh() {
   local repo
@@ -43,7 +38,28 @@ fzf-gh() {
   fi
 }
 
+if [[ $- == *i* ]]; then
 bind -x '"\C-g": "fzf-gh"'
+bind -x '"\C-k": "fzf-cd-src"'
+bind -x '"\C-h": "fzf-select-history"'
+fi
 
 alias gst='git status'
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
+
+# Created by `pipx` on 2025-06-07 11:23:35
+export PATH="$PATH:/home/touka_aoi/.local/bin"
+
+. "$HOME/.local/bin/env"
+
+if command -v kubectl > /dev/null; then
+  export GPG_TTY=$(tty)
+  source <(kubectl completion bash)
+
+  alias k=kubectl
+  complete -o default -F __start_kubectl k
+fi
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+export KUBECTX_IGNORE_FZF=1
