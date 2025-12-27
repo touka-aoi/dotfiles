@@ -1,0 +1,2 @@
+# keybind settings
+keybind = global:f12=toggle_quick_terminal
