@@ -1,0 +1,37 @@
+# mise
+eval "$(mise activate zsh)"
+
+# bun
+export PATH="/Users/touka/.bun/bin:$PATH"
+
+# starship
+eval "$(starship init zsh)"
+
+# chezmoi
+export CHEZMOI_SOURCE_DIR="$HOME/ghq/github.com/touka-aoi/dotfiles"
+
+# fzf cd src
+function fzf-cd-src () {
+  local selected_dir=$(
+    ghq list -p |\
+    fzf --query "$LBUFFER" --layout=reverse --border)
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N fzf-cd-src
+bindkey "^k" fzf-cd-src
+
+# fzff history 
+function fzf-select-history() {
+  BUFFER=$(
+    history -n -r 1 | \
+    fzf --query "$LBUFFER" --layout=reverse  --preview "man {}")
+  CURSOR=$#BUFFER
+  zle reset-prompt
+}
+zle -N fzf-select-history
+bindkey '^h' fzf-select-history
+
