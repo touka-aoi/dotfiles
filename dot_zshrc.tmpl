@@ -10,6 +10,9 @@ eval "$(starship init zsh)"
 # chezmoi
 export CHEZMOI_SOURCE_DIR="$HOME/ghq/github.com/touka-aoi/dotfiles"
 
+# sheldon
+eval "$(sheldon source)"
+
 # fzf cd src
 function fzf-cd-src () {
   local selected_dir=$(
