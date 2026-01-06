@@ -38,3 +38,14 @@ function fzf-select-history() {
 zle -N fzf-select-history
 bindkey '^h' fzf-select-history
 
+# fzf gh repo 
+function fzf-gh () {
+  local selected=$(
+    gh repo list --limit 200 --json sshUrl --jq '.[] | .sshUrl' \
+    | fzf --layout=reverse --border
+  )
+  LBUFFER+="$selected"
+  zle redisplay
+}
+zle -N fzf-gh
+bindkey "^g" fzf-gh
