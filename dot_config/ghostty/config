@@ -1,2 +1,5 @@
 # keybind settings
 keybind = global:f12=toggle_quick_terminal
+
+font-family = "JetBrains Mono", "Noto Sans"
+
