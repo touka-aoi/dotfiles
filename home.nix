@@ -83,74 +83,7 @@ in
   };
 
   # ---- starship（プロンプト） ----
-  # アイコンは使わず文字だけで表示する（Nerd Font が不要）
-  programs.starship = {
-    enable = true;
-    settings = {
-      # 1行目に情報、2行目に入力欄
-      format = lib.concatStrings [
-        "$username"
-        "$directory"
-        "$git_branch"
-        "$git_status"
-        "$nodejs"
-        "$golang"
-        "$python"
-        "$rust"
-        "$deno"
-        "$java"
-        "$cmd_duration"
-        "$line_break"
-        "$character"
-      ];
-      add_newline = true;
-      # フォルダの走査やコマンドの実行に時間がかかっても、これ以上は待たない（ミリ秒）
-      scan_timeout = 30;
-      command_timeout = 300;
-
-      username = {
-        show_always = true;
-        format = "[$user]($style) ";
-      };
-      directory = {
-        truncation_length = 4;
-        truncation_symbol = "…/";
-        read_only = " ro";
-      };
-      git_branch = {
-        symbol = "";
-        format = "on [$branch]($style) ";
-      };
-      git_status.format = "([\\[$all_status$ahead_behind\\]]($style) )";
-      cmd_duration.format = "took [$duration]($style) ";
-
-      # 言語のバージョン（該当するファイルがあるフォルダでだけ表示）
-      nodejs = {
-        symbol = "node ";
-        format = "via [$symbol($version)]($style) ";
-      };
-      golang = {
-        symbol = "go ";
-        format = "via [$symbol($version)]($style) ";
-      };
-      python = {
-        symbol = "py ";
-        format = "via [$symbol$pyenv_prefix($version)( \\($virtualenv\\))]($style) ";
-      };
-      rust = {
-        symbol = "rs ";
-        format = "via [$symbol($version)]($style) ";
-      };
-      deno = {
-        symbol = "deno ";
-        format = "via [$symbol($version)]($style) ";
-      };
-      java = {
-        symbol = "java ";
-        format = "via [$symbol($version)]($style) ";
-      };
-    };
-  };
+  programs.starship.enable = true;
 
   # ---- git ----
   programs.git = {
@@ -166,6 +99,7 @@ in
   xdg.configFile = {
     "nvim/init.lua".source = ./config/nvim/init.lua;
     "git/ignore".source = ./config/git/ignore;
+    "starship.toml".source = ./config/starship/starship.toml;
   }
   // lib.optionalAttrs isDarwin {
     # Ghostty は Mac でのみ使用
