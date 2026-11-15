@@ -1,18 +1,3 @@
-# mise
-eval "$(mise activate zsh)"
-
-# bun
-export PATH="/Users/touka/.bun/bin:$PATH"
-
-# starship
-eval "$(starship init zsh)"
-
-# chezmoi
-export CHEZMOI_SOURCE_DIR="$HOME/ghq/github.com/touka-aoi/dotfiles"
-
-# sheldon
-eval "$(sheldon source)"
-
 # fzf cd src
 function fzf-cd-src () {
   local selected_dir=$(
@@ -31,7 +16,7 @@ bindkey "^k" fzf-cd-src
 function fzf-select-history() {
   BUFFER=$(
     history -n -r 1 | \
-    fzf --query "$LBUFFER" --layout=reverse  --preview "man {}")
+    fzf --query "$LBUFFER" --layout=reverse )
   CURSOR=$#BUFFER
   zle reset-prompt
 }
