@@ -28,6 +28,7 @@ in
     pnpm
     claude-code
     ansible
+    kubectl
   ];
 
   home.sessionVariables = {
@@ -60,6 +61,7 @@ in
         }
       }
       source ${./config/zsh/functions.zsh}
+      source ${./config/zsh/aliases.zsh}
     '';
   };
 
