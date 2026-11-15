@@ -27,6 +27,7 @@ in
     nodejs
     pnpm
     claude-code
+    ansible
   ];
 
   home.sessionVariables = {
