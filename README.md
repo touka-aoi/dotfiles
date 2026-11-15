@@ -23,7 +23,7 @@ curl -fsSL https://raw.githubusercontent.com/touka-aoi/dotfiles/main/setup.sh | 
 
 | 種類 | 内容 |
 | --- | --- |
-| zsh | `config/zsh/functions.zsh` |
+| zsh | `config/zsh/` |
 | starship | `config/starship/starship.toml` |
 | git | `user.name`、`user.email` `config/git/ignore` |
 | neovim | `config/nvim/init.lua`|
