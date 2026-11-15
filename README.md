@@ -30,6 +30,7 @@ curl -fsSL https://raw.githubusercontent.com/touka-aoi/dotfiles/main/setup.sh | 
 | editorconfig | `~/.editorconfig` |
 | Claude Code | `~/.claude/CLAUDE.md` |
 | Ghostty | `config/ghostty/config`（macOS のみ） |
+| Keychron Q11 | `config/keychron/q11.json`（Keychron Launcher で読み込む） |
 
 ### zsh のキー割り当て
 
